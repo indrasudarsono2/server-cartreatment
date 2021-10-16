@@ -20,7 +20,7 @@
                     <td><%= i+1 %></td>
                     <td><%= step[i].name %></td>
                     <td><%= step[i].description %></td>
-                    <td align="center"><img src="http://localhost:3000/<%= step[i].imageUrl %>" alt="imageUrl" height="auto" width="70px" style="margin: auto;"></td>
+                    <td align="center"><img src="https://admin-cartreatment.herokuapp.com/<%= step[i].imageUrl %>" alt="imageUrl" height="auto" width="70px" style="margin: auto;"></td>
                     <td>
                       <form action="/admin/item/<%= itemId %>/step/<%= step[i].id %>?_method=DELETE" method="POST">
                         <a href="javascript: void()" class="btn btn-warning btn-circle btn-sm button-update"
