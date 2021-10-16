@@ -1,0 +1,25 @@
+{
+  "_id": "5e96cbe292b97300fc90cee1",
+  "bookingStartDate": "12-12-2020",
+  "bookingEndDate": "12-12-2020",
+  "invoice": "1231231",
+  "car": "2",
+  "total": "8000",
+  "itemId": {
+    "$oid": "6146c2faa4ebcd673a97d3a3",
+    "title": "Premium Nano Ceramic Coating",
+    "price": "4000"
+  },
+  "memberId": {
+    "$oid":"5e96cbe292b97300fc903333"
+  },
+  "bankId": {
+    "$oid": "613dfd53f15772c5a79aefba"
+  },
+  "payments": {
+    "proofPayment": "images/bukti.jpeg",
+    "bankFrom": "MANDIRI",
+    "status": "Proses",
+    "accountHolder": "Cipto"
+  }
+}

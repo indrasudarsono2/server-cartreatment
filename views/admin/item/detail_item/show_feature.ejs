@@ -1,0 +1,64 @@
+<div class="tab-pane fade show active" id="show-feature" role="tabpanel" aria-labelledby="home-tab">
+  <div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Qty</th>
+                  <th>Image URL</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i = 0 ; i< feature.length; i++){ %>
+                  <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= feature[i].name %></td>
+                    <td><%= feature[i].qty %></td>
+                    <td align="center"><img src="http://localhost:3000/<%= feature[i].imageUrl %>" alt="imageUrl" height="auto" width="70px" style="margin: auto;"></td>
+                    <td>
+                      <form action="/admin/item/<%= itemId %>/feature/<%= feature[i].id %>?_method=DELETE" method="POST">
+                        <a href="javascript: void()" class="btn btn-warning btn-circle btn-sm button-update"
+                        data-id="<%= feature[i].id %>" data-name="<%= feature[i].name %>" data-qty="<%= feature[i].qty %>" data-itemid="<%= itemId %>"
+                        ><i class="fas fa-edit"></i></a>
+                        <button type="submit" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash" onclick="return confirm('Are you sure want to delete?')"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <form action="/admin/item/add/feature" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Feature Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Feature Name..." required>
+              </div>
+              <div class="form-group">
+                <label for="qty">Quantity</label>
+                <input type="number" class="form-control" id="qty" name="qty" placeholder="Quantity..." required>
+              </div>
+              <div class="form-group">
+                <label for="image">image</label>
+                <input type="file" class="form-control" id="image" name="image" placeholder="image..." required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" value="<%= itemId %>" name="itemId">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

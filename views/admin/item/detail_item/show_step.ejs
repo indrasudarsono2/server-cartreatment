@@ -1,0 +1,66 @@
+<div class="tab-pane fade" id="show-step" role="tabpanel" aria-labelledby="home-tab">
+  <div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTableStep" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Image URL</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i = 0 ; i< step.length; i++){ %>
+                  <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= step[i].name %></td>
+                    <td><%= step[i].description %></td>
+                    <td align="center"><img src="http://localhost:3000/<%= step[i].imageUrl %>" alt="imageUrl" height="auto" width="70px" style="margin: auto;"></td>
+                    <td>
+                      <form action="/admin/item/<%= itemId %>/step/<%= step[i].id %>?_method=DELETE" method="POST">
+                        <a href="javascript: void()" class="btn btn-warning btn-circle btn-sm button-update"
+                        data-id="<%= step[i].id %>" data-name="<%= step[i].name %>" data-description="<%= step[i].description %>" data-itemid="<%= itemId %>"
+                        ><i class="fas fa-edit"></i></a>
+                        <button type="submit" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash" onclick="return confirm('Are you sure want to delete?')"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <form action="/admin/item/add/step" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Step Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Step Name..." required>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control" required>
+
+                </textarea>
+              </div>
+              <div class="form-group">
+                <label for="image">image</label>
+                <input type="file" class="form-control" id="image" name="image" placeholder="image..." required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" value="<%= itemId %>" name="itemId">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
