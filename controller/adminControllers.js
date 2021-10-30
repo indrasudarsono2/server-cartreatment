@@ -341,7 +341,7 @@ module.exports= {
       const alertStatus = req.flash('alertStatus');
       const alert = {message:alertMessage, status: alertStatus};
       const service = await Service.find();
-      res.render('admin/item/view_item', {title: "car-treatment.com | Show Image Item", item, alert, action: 'show-image'});
+      res.render('admin/item/view_item', {title: "car-treatment.com | Show Image Item", item, alert, action: 'show-image', user : req.session.user});
     }catch (error){
       req.flash('alertMessage', `${error.message}`);
       req.flash('alertStatus', 'danger');
@@ -447,6 +447,7 @@ module.exports= {
     }
   },
   addFeature : async (req, res) => {
+    
     const { name, qty, itemId } = req.body;
     try{
       if(!req.file) {
@@ -460,6 +461,7 @@ module.exports= {
         itemId,
         imageUrl: `images/${req.file.filename}` 
       });
+      
       const item = await Item.findOne({ _id : itemId });
       item.featureId.push({ _id : feature.id });
       await item.save();

@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://cartreatment:alinda004@cluster0.ef6tn.mongodb.net/db_cartreatment?retryWrites=true&w=majority');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //Router
