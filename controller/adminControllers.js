@@ -358,7 +358,7 @@ module.exports= {
       const alertStatus = req.flash('alertStatus');
       const alert = {message:alertMessage, status: alertStatus};
       const service = await Service.find();
-      res.render('admin/item/view_item', {title: "car-treatment.com | Edit Item", item, alert, service,action: 'edit'});
+      res.render('admin/item/view_item', {title: "car-treatment.com | Edit Item", item, alert, service,action: 'edit', user : req.session.user});
     }catch (error){
       req.flash('alertMessage', `${error.message}`);
       req.flash('alertStatus', 'danger');
