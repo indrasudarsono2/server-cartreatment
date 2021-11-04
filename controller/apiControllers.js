@@ -67,10 +67,11 @@ module.exports = {
     try {
       const { id } = req.params;
       const item = await Item.findOne({ _id : id })
-                    .populate({
-                      path:'imageId',
-                      select:'_id imageUrl'
-                    });
+                    .populate({path:'imageId', select:'_id imageUrl'})
+                    .populate({path:'featureId', select:'_id name qty imageUrl'})
+                    .populate({path:'stepId', select:'_id name description imageUrl'})
+                                         
+                    ;
       const bank = await Bank.find();
       const testimony = {
         _id: "1",
